@@ -1,0 +1,49 @@
+/*scroll section active link*/
+ let sections = document.querySelectorAll('section');
+ let navLinks = document.querySelectorAll('header navbar a');
+
+ window.onscroll = () => {
+    sections.forEach(sec => {
+       let top = window.scrollY;
+       let offset = sec.offsetTop  -150;
+       let height = sec.offsetHeight;
+       let id = sec.getAttribute('id');
+
+       if(top >= offset && top < offset +height){
+         navLinks.forEach(links => {
+            links.classList.remove('active');
+            document.querySelector('header navbar a[href*=' + id +']').classList.add('active');
+         });
+       };
+   }); 
+ };
+
+
+    /*sticky navbar*/
+ 
+    let header = document.querySelector('header');
+     header.classList.toggle('sticky',window.scrollY > 100);
+       
+;
+
+/*scroll reveal */
+ScrollReveal({ 
+    reset: true,
+    distance:'80px',
+    duration: 2000,
+    delay: 200
+ });
+
+ ScrollReveal().reveal('.home-content, .heading', { origin:'top' });
+ ScrollReveal().reveal('.home-img, .about-img, .blog-img, .contact form', { origin:'bottom' });
+ ScrollReveal().reveal('.home-content h2, .about-img', { origin:'left' });
+ ScrollReveal().reveal('.home-content p, .about-content', { origin:'right' });
+
+ /*typed js*/
+ const typed = new Typed('.multiple-text',{
+    strings:['Student','Developer','Dancer'],
+    typeSpeed: 100,
+    backSpeed: 100,
+    backdelay: 1000,
+   loop: true
+ });
